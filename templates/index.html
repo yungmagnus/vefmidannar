@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{%block title %}Eldsneytisverð - miðannarverkefni - json{%endblock%}
+{% block content %}
+<div class="wrapper">
+{% set oneCo = [] %}
+{% for item in gogn['results'] %}
+    {% if item.company not in oneCo %}
+        {% do oneCo.append(item.company) %}
+        <div class="box">
+            <a href="/company/{{ item.company }}">
+                <img src="static/{{ item.company }}.png" title="{{ item.company }}">
+                </a>
+        </div>
+    {% endif %}
+   {% endfor %}
+</div>
+<div class="kort">
+    <h2>Besta verðið</h2>
+    <h4>Ódýrasta Bensínið <i>{{minP[0]}} kr. </i> er hjá {{minP[1]}}, {{minP[2]}} </h4>
+    <h4>Ódýrasta Diesel Olian <i>{{minD[0]}} kr.</i> er hjá {{minD[1]}},minD[2] </h4> 
+    
+
+</div>
+{% endblock %}

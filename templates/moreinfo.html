@@ -1,0 +1,23 @@
+{%extends "base.html"  %}
+{% block title %}Nanari upplysingar bensinstoðvar{% endblock %}
+{% block content %}
+    <h2>nánari upplysingar bensinstoðvar</h2>
+    {% for item in gogn['results'] %}
+        {% if item.key == k %}
+        <h3>Soluaðili: {{item.company}}</h3>
+        <h3>Staður: {{item.name}}</h3>
+        <h4>Verð a 1 litra af bensini, 95 oktan: {{item.bensin95}} kr.</h4>
+        <h4>Verð a 1 litra dieseloliu: {{item.diesel}} kr.</h4>
+    <div class="kort">
+    <h4>Staðsetning bensinstoðvar</h4>
+    <ul>
+        <li>Breiddargráða: {{item.geo.lat}}</li>
+        <li>Lengdargráða: {{item.geo.lon}}</li>
+        <li><a href="https://www.google.com/maps/@{{item.geo.lat}},{{item.geo.lon}},18z/">Staðsetning á (google) korti</a>  </li>
+
+    </ul>
+
+    </div>
+    {%endif%}
+    {%endfor%}
+{% endblock %}
